@@ -130,7 +130,7 @@ module XmlMiniTest
     end
 
     test "#to_tag accepts time types" do
-      @xml.to_tag(:b, Time.new(1993, 02, 24, 12, 0, 0, "+09:00"), @options)
+      @xml.to_tag(:b, Time.new(1993, 2, 24, 12, 0, 0, "+09:00"), @options)
       assert_xml("<b type=\"dateTime\">1993-02-24T12:00:00+09:00</b>")
     end
 
@@ -240,7 +240,7 @@ module XmlMiniTest
       assert_equal :symbol, parser.call("symbol")
       assert_equal :symbol, parser.call(:symbol)
       assert_equal :'123', parser.call(123)
-      assert_raises(ArgumentError) { parser.call(Date.new(2013, 11, 12, 02, 11)) }
+      assert_raises(ArgumentError) { parser.call(Date.new(2013, 11, 12, 2, 11)) }
     end
 
     def test_date
@@ -252,10 +252,10 @@ module XmlMiniTest
 
     def test_datetime
       parser = @parsing["datetime"]
-      assert_equal Time.new(2013, 11, 12, 02, 11, 00, 0), parser.call("2013-11-12T02:11:00Z")
+      assert_equal Time.new(2013, 11, 12, 2, 11, 0, 0), parser.call("2013-11-12T02:11:00Z")
       assert_equal DateTime.new(2013, 11, 12), parser.call("2013-11-12T0211Z")
-      assert_equal DateTime.new(2013, 11, 12, 02, 11), parser.call("2013-11-12T02:11Z")
-      assert_equal DateTime.new(2013, 11, 12, 02, 11), parser.call("2013-11-12T11:11+9")
+      assert_equal DateTime.new(2013, 11, 12, 2, 11), parser.call("2013-11-12T02:11Z")
+      assert_equal DateTime.new(2013, 11, 12, 2, 11), parser.call("2013-11-12T11:11+9")
       assert_raises(ArgumentError) { parser.call("1384190018") }
     end
 
@@ -265,7 +265,7 @@ module XmlMiniTest
       assert_equal 123, parser.call(123.003)
       assert_equal 123, parser.call("123")
       assert_equal 0, parser.call("")
-      assert_raises(ArgumentError) { parser.call(Date.new(2013, 11, 12, 02, 11)) }
+      assert_raises(ArgumentError) { parser.call(Date.new(2013, 11, 12, 2, 11)) }
     end
 
     def test_float
@@ -276,7 +276,7 @@ module XmlMiniTest
       assert_equal 0.0, parser.call("")
       assert_equal 123, parser.call(123)
       assert_equal 123.05, parser.call(123.05)
-      assert_raises(ArgumentError) { parser.call(Date.new(2013, 11, 12, 02, 11)) }
+      assert_raises(ArgumentError) { parser.call(Date.new(2013, 11, 12, 2, 11)) }
     end
 
     def test_decimal
@@ -287,7 +287,7 @@ module XmlMiniTest
       assert_equal 0.0, parser.call("")
       assert_equal 123, parser.call(123)
       assert_raises(ArgumentError) { parser.call(123.04) }
-      assert_raises(ArgumentError) { parser.call(Date.new(2013, 11, 12, 02, 11)) }
+      assert_raises(ArgumentError) { parser.call(Date.new(2013, 11, 12, 2, 11)) }
     end
 
     def test_boolean
@@ -308,7 +308,7 @@ module XmlMiniTest
       assert_equal "[]", parser.call("[]")
       assert_equal "[]", parser.call([])
       assert_equal "{}", parser.call({})
-      assert_raises(ArgumentError) { parser.call(Date.new(2013, 11, 12, 02, 11)) }
+      assert_raises(ArgumentError) { parser.call(Date.new(2013, 11, 12, 2, 11)) }
     end
 
     def test_yaml

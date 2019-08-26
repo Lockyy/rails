@@ -735,7 +735,7 @@ class AttributeMethodsTest < ActiveRecord::TestCase
 
       record.written_on = "2012-02-20 09:00"
       record.save
-      assert_equal Time.zone.local(2012, 02, 20, 9), record.reload.written_on
+      assert_equal Time.zone.local(2012, 2, 20, 9), record.reload.written_on
     end
   end
 
@@ -801,7 +801,7 @@ class AttributeMethodsTest < ActiveRecord::TestCase
 
   test "setting a time zone-aware time with DST" do
     in_time_zone "Pacific Time (US & Canada)" do
-      current_time = Time.zone.local(2014, 06, 15, 10)
+      current_time = Time.zone.local(2014, 6, 15, 10)
       record = @target.new(bonus_time: current_time)
       time_before_save = record.bonus_time
 
@@ -827,7 +827,7 @@ class AttributeMethodsTest < ActiveRecord::TestCase
     with_time_zone_aware_types(:datetime) do
       in_time_zone "Pacific Time (US & Canada)" do
         record = @target.new(bonus_time: "10:00:00")
-        expected_time = Time.utc(2000, 01, 01, 10)
+        expected_time = Time.utc(2000, 1, 1, 10)
 
         assert_equal expected_time, record.bonus_time
         assert_predicate record.bonus_time, :utc?

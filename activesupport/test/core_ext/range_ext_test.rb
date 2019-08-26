@@ -99,7 +99,7 @@ class RangeTest < ActiveSupport::TestCase
 
   def test_overlaps_on_time
     time_range_1 = Time.utc(2005, 12, 10, 15, 30)..Time.utc(2005, 12, 10, 17, 30)
-    time_range_2 = Time.utc(2005, 12, 10, 17, 00)..Time.utc(2005, 12, 10, 18, 00)
+    time_range_2 = Time.utc(2005, 12, 10, 17, 0)..Time.utc(2005, 12, 10, 18, 0)
     assert time_range_1.overlaps?(time_range_2)
   end
 

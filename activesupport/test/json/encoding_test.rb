@@ -312,7 +312,7 @@ class TestJSONEncoding < ActiveSupport::TestCase
     Struct.new("UserNameAndDate", :name, :date)
     Struct.new("Custom", :name, :sub)
     user_email = Struct::UserNameAndEmail.new "David", "sample@example.com"
-    user_birthday = Struct::UserNameAndDate.new "David", Date.new(2010, 01, 01)
+    user_birthday = Struct::UserNameAndDate.new "David", Date.new(2010, 1, 1)
     custom = Struct::Custom.new "David", user_birthday
 
     json_strings = ""

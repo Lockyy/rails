@@ -5,7 +5,7 @@ require "models/topic"
 
 class DateTest < ActiveRecord::TestCase
   def test_date_with_time_value
-    time_value = Time.new(2016, 05, 11, 19, 0, 0)
+    time_value = Time.new(2016, 5, 11, 19, 0, 0)
     topic = Topic.create(last_read: time_value)
     assert_equal topic, Topic.find_by(last_read: time_value)
   end

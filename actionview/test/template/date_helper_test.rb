@@ -1831,7 +1831,7 @@ class DateHelperTest < ActionView::TestCase
 
     expected << "</select>\n"
 
-    assert_dom_equal expected, date_select("post", "written_on", selected: Date.new(2004, 07, 10))
+    assert_dom_equal expected, date_select("post", "written_on", selected: Date.new(2004, 7, 10))
   end
 
   def test_date_select_with_selected_in_hash
