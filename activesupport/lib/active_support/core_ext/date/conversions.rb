@@ -88,8 +88,8 @@ class Date
   # Returns a string which represents the time in used time zone as DateTime
   # defined by XML Schema:
   #
-  #   date = Date.new(2015, 05, 23)  # => Sat, 23 May 2015
-  #   date.xmlschema                 # => "2015-05-23T00:00:00+04:00"
+  #   date = Date.new(2015, 5, 23)  # => Sat, 23 May 2015
+  #   date.xmlschema                # => "2015-05-23T00:00:00+04:00"
   def xmlschema
     in_time_zone.xmlschema
   end
